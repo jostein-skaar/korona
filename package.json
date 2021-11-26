@@ -6,7 +6,8 @@
     "build": "tsc && vite build",
     "postbuild": "npm run sw",
     "serve": "vite preview",
-    "sw": "workbox injectManifest src/service-worker/workbox-config.js"
+    "sw": "workbox injectManifest src/service-worker/workbox-config.js",
+    "splash": "npx pwa-asset-generator filer/temp/korona-ikon-1024.png public/splash -b=#fff6d5 --splash-only=true --index=index.html --path-override=./splash"
   },
   "devDependencies": {
     "typescript": "^4.5.2",
