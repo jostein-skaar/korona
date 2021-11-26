@@ -4,10 +4,19 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "postbuild": "npm run sw",
+    "serve": "vite preview",
+    "sw": "workbox injectManifest src/service-worker/workbox-config.js"
   },
   "devDependencies": {
-    "typescript": "^4.3.2",
-    "vite": "^2.6.4"
+    "typescript": "^4.5.2",
+    "vite": "^2.6.14",
+    "workbox-cli": "^6.4.1"
+  },
+  "dependencies": {
+    "@jostein-skaar/common-game": "^1.0.0",
+    "phaser": "^3.55.2",
+    "webfontloader": "^1.6.28",
+    "workbox-window": "^6.4.1"
   }
 }
