@@ -1,7 +1,7 @@
 import './style.css';
 
 import Phaser from 'phaser';
-import { calculateDimension, DimensionLimits, ScaleMode } from '@jostein-skaar/common-game';
+import { calculateDimension, DimensionLimits, reloadWhenResize, ScaleMode } from '@jostein-skaar/common-game';
 import BestSene from './spill/best-sene';
 import IntroSene from './spill/intro-sene';
 import PreloadSene from './spill/preload-sene';
@@ -10,19 +10,7 @@ import StartinfoSene from './spill/startinfo-sene';
 import TapSene from './spill/tap-sene';
 import { registerServiceWorker } from './service-worker/workbox-registration';
 
-const hackForIos = Date.now();
-const erIos = /iPad|iPhone|iPod/.test(navigator.userAgent);
-let omstartVedResizeTimeout: any;
-window.onresize = () => {
-  if (erIos && Date.now() - hackForIos < 1000) {
-    return;
-  }
-
-  clearTimeout(omstartVedResizeTimeout);
-  omstartVedResizeTimeout = setTimeout(() => {
-    window.location.reload();
-  }, 200);
-};
+reloadWhenResize(window);
 
 // Tips rundt retina og Phaser 3
 // https://supernapie.com/blog/support-retina-with-phaser-3/
